@@ -19,7 +19,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # YouTube API integration
-gem "google-apis-youtube_v3", "~> 0.20.0"
+gem "google-apis-youtube_v3", "~> 0.56.0"
 gem "dotenv-rails", "~> 3.1"
 gem "httparty", "~> 0.22.0"
 
