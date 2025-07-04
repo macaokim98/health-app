@@ -24,18 +24,18 @@ checking for Random.bytes... yes
 creating Makefile
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/puma-6.6.0/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-z5zlpp sitelibdir\=./.gem.20250704-54229-z5zlpp clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-se30qq sitelibdir\=./.gem.20250704-22607-se30qq clean
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/puma-6.6.0/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-z5zlpp sitelibdir\=./.gem.20250704-54229-z5zlpp
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-se30qq sitelibdir\=./.gem.20250704-22607-se30qq
 compiling http11_parser.c
 compiling mini_ssl.c
 compiling puma_http11.c
 linking shared-object puma/puma_http11.so
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/puma-6.6.0/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-z5zlpp sitelibdir\=./.gem.20250704-54229-z5zlpp install
-/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20250704-54229-z5zlpp/puma
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-se30qq sitelibdir\=./.gem.20250704-22607-se30qq install
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20250704-22607-se30qq/puma
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/puma-6.6.0/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-z5zlpp sitelibdir\=./.gem.20250704-54229-z5zlpp clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-se30qq sitelibdir\=./.gem.20250704-22607-se30qq clean

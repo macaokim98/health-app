@@ -16,16 +16,16 @@ checking for ttyname_r()... yes
 creating Makefile
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/io-console-0.8.0/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-ijhha7 sitelibdir\=./.gem.20250704-54229-ijhha7 clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-59sl97 sitelibdir\=./.gem.20250704-22607-59sl97 clean
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/io-console-0.8.0/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-ijhha7 sitelibdir\=./.gem.20250704-54229-ijhha7
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-59sl97 sitelibdir\=./.gem.20250704-22607-59sl97
 compiling console.c
 linking shared-object io/console.so
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/io-console-0.8.0/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-ijhha7 sitelibdir\=./.gem.20250704-54229-ijhha7 install
-/usr/bin/install -c -m 0755 console.so ./.gem.20250704-54229-ijhha7/io
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-59sl97 sitelibdir\=./.gem.20250704-22607-59sl97 install
+/usr/bin/install -c -m 0755 console.so ./.gem.20250704-22607-59sl97/io
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/io-console-0.8.0/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-ijhha7 sitelibdir\=./.gem.20250704-54229-ijhha7 clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-59sl97 sitelibdir\=./.gem.20250704-22607-59sl97 clean

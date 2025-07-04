@@ -8,16 +8,16 @@ checking for whether -std=c99 is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/json-2.12.2/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-ot1bgk sitelibdir\=./.gem.20250704-54229-ot1bgk clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-t5w67n sitelibdir\=./.gem.20250704-22607-t5w67n clean
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/json-2.12.2/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-ot1bgk sitelibdir\=./.gem.20250704-54229-ot1bgk
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-t5w67n sitelibdir\=./.gem.20250704-22607-t5w67n
 compiling parser.c
 linking shared-object json/ext/parser.so
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/json-2.12.2/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-ot1bgk sitelibdir\=./.gem.20250704-54229-ot1bgk install
-/usr/bin/install -c -m 0755 parser.so ./.gem.20250704-54229-ot1bgk/json/ext
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-t5w67n sitelibdir\=./.gem.20250704-22607-t5w67n install
+/usr/bin/install -c -m 0755 parser.so ./.gem.20250704-22607-t5w67n/json/ext
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/json-2.12.2/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-ot1bgk sitelibdir\=./.gem.20250704-54229-ot1bgk clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-t5w67n sitelibdir\=./.gem.20250704-22607-t5w67n clean

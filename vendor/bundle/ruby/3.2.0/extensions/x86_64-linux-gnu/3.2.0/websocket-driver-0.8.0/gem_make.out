@@ -3,16 +3,16 @@ current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.
 creating Makefile
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.8.0/ext/websocket-driver
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-3f7yhm sitelibdir\=./.gem.20250704-54229-3f7yhm clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-c8rjk2 sitelibdir\=./.gem.20250704-22607-c8rjk2 clean
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.8.0/ext/websocket-driver
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-3f7yhm sitelibdir\=./.gem.20250704-54229-3f7yhm
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-c8rjk2 sitelibdir\=./.gem.20250704-22607-c8rjk2
 compiling websocket_mask.c
 linking shared-object websocket_mask.so
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.8.0/ext/websocket-driver
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-3f7yhm sitelibdir\=./.gem.20250704-54229-3f7yhm install
-/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20250704-54229-3f7yhm
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-c8rjk2 sitelibdir\=./.gem.20250704-22607-c8rjk2 install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20250704-22607-c8rjk2
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.8.0/ext/websocket-driver
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-3f7yhm sitelibdir\=./.gem.20250704-54229-3f7yhm clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-c8rjk2 sitelibdir\=./.gem.20250704-22607-c8rjk2 clean

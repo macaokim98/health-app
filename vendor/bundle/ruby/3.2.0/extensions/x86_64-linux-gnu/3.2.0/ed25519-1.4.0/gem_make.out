@@ -7,10 +7,10 @@ checking for whether -std=c99 is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/ed25519-1.4.0/ext/ed25519_ref10
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-hykmej sitelibdir\=./.gem.20250704-54229-hykmej clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-1c352d sitelibdir\=./.gem.20250704-22607-1c352d clean
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/ed25519-1.4.0/ext/ed25519_ref10
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-hykmej sitelibdir\=./.gem.20250704-54229-hykmej
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-1c352d sitelibdir\=./.gem.20250704-22607-1c352d
 compiling ed25519_ref10.c
 compiling fe.c
 compiling ge.c
@@ -24,8 +24,8 @@ compiling verify.c
 linking shared-object ed25519_ref10.so
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/ed25519-1.4.0/ext/ed25519_ref10
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-hykmej sitelibdir\=./.gem.20250704-54229-hykmej install
-/usr/bin/install -c -m 0755 ed25519_ref10.so ./.gem.20250704-54229-hykmej
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-1c352d sitelibdir\=./.gem.20250704-22607-1c352d install
+/usr/bin/install -c -m 0755 ed25519_ref10.so ./.gem.20250704-22607-1c352d
 
 current directory: /home/devcontainers/projects/health-app/vendor/bundle/ruby/3.2.0/gems/ed25519-1.4.0/ext/ed25519_ref10
-make DESTDIR\= sitearchdir\=./.gem.20250704-54229-hykmej sitelibdir\=./.gem.20250704-54229-hykmej clean
+make DESTDIR\= sitearchdir\=./.gem.20250704-22607-1c352d sitelibdir\=./.gem.20250704-22607-1c352d clean
