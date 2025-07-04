@@ -1,0 +1,73 @@
+<!-- Dark Mode Toggle -->
+<div class="theme-toggle" onclick="toggleTheme()">
+  <span id="themeIcon">🌙</span>
+</div>
+
+<div class="container">
+  <div class="header">
+    <h1><%= @app_title %></h1>
+    <p class="date">Today is <%= @current_date.strftime("%B %d, %Y") %></p>
+  </div>
+  
+  <div class="dashboard">
+    <div class="card">
+      <h3>🎬 Health Videos</h3>
+      <ul>
+        <li><a href="/videos">Browse Health Videos</a></li>
+        <li><a href="/videos/search?q=yoga">Yoga Sessions</a></li>
+        <li><a href="/videos/search?q=workout">Workout Routines</a></li>
+        <li><a href="/videos/search?q=nutrition">Nutrition Tips</a></li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h3>📊 Quick Actions</h3>
+      <ul>
+        <li><a href="#">Log Exercise</a></li>
+        <li><a href="#">Track Nutrition</a></li>
+        <li><a href="#">Record Weight</a></li>
+        <li><a href="#">View Progress</a></li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h3>📈 Today's Summary</h3>
+      <div class="stats">
+        <div class="stat">
+          <span class="label">Steps:</span>
+          <span class="value">8,250</span>
+        </div>
+        <div class="stat">
+          <span class="label">Calories:</span>
+          <span class="value">1,890</span>
+        </div>
+        <div class="stat">
+          <span class="label">Water:</span>
+          <span class="value">6 glasses</span>
+        </div>
+        <div class="stat">
+          <span class="label">Active Time:</span>
+          <span class="value">45 mins</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🏆 Weekly Goals</h3>
+      <div class="stats">
+        <div class="stat">
+          <span class="label">Workout Days:</span>
+          <span class="value">4/5</span>
+        </div>
+        <div class="stat">
+          <span class="label">Weight Goal:</span>
+          <span class="value">-2.3 lbs</span>
+        </div>
+        <div class="stat">
+          <span class="label">Sleep Quality:</span>
+          <span class="value">87%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

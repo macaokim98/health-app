@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Health App - Super Design Prototype</title>
+    <style>
+        /* CSS Custom Properties for Dark/Light Mode */
+        :root {
+          --primary-color: #667eea;
+          --secondary-color: #764ba2;
+          --accent-color: #f093fb;
+          --background-color: #f8fafc;
+          --surface-color: #ffffff;
+          --text-primary: #1a202c;
+          --text-secondary: #4a5568;
+          --text-muted: #718096;
+          --border-color: #e2e8f0;
+          --shadow-light: 0 1px 3px rgba(0,0,0,0.1);
+          --shadow-medium: 0 4px 6px rgba(0,0,0,0.1);
+          --shadow-large: 0 10px 25px rgba(0,0,0,0.1);
+          --border-radius: 12px;
+          --border-radius-large: 20px;
+        }
+
+        [data-theme="dark"] {
+          --background-color: #1a202c;
+          --surface-color: #2d3748;
+          --text-primary: #f7fafc;
+          --text-secondary: #e2e8f0;
+          --text-muted: #a0aec0;
+          --border-color: #4a5568;
+          --shadow-light: 0 1px 3px rgba(0,0,0,0.3);
+          --shadow-medium: 0 4px 6px rgba(0,0,0,0.3);
+          --shadow-large: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Base Styles */
+        * {
+          box-sizing: border-box;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Inter', sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: var(--background-color);
+          color: var(--text-primary);
+          line-height: 1.6;
+          transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        /* Video Page Styles */
+        .video-page {
+          min-height: 100vh;
+          background: var(--background-color);
+        }
+
+        .video-header {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .header-gradient {
+          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+          padding: 60px 0 40px;
+          position: relative;
+        }
+
+        .header-gradient::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+          pointer-events: none;
+        }
+
+        .page-title {
+          font-size: 2.8em;
+          font-weight: 800;
+          color: white;
+          margin: 0;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+        }
+
+        .icon-wrapper {
+          font-size: 0.8em;
+          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .page-subtitle {
+          color: rgba(255,255,255,0.9);
+          font-size: 1.2em;
+          text-align: center;
+          margin: 10px 0 0;
+          font-weight: 300;
+        }
+
+        .search-container {
+          background: var(--surface-color);
+          padding: 30px 0;
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-form {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .search-input-wrapper {
+          position: relative;
+          display: flex;
+          background: var(--surface-color);
+          border-radius: var(--border-radius-large);
+          box-shadow: var(--shadow-medium);
+          border: 2px solid var(--border-color);
+          transition: all 0.3s ease;
+        }
+
+        .search-input-wrapper:focus-within {
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-input {
+          flex: 1;
+          padding: 18px 24px;
+          border: none;
+          background: transparent;
+          font-size: 1.1em;
+          color: var(--text-primary);
+          border-radius: var(--border-radius-large);
+        }
+
+        .search-input::placeholder {
+          color: var(--text-muted);
+        }
+
+        .search-input:focus {
+          outline: none;
+        }
+
+        .search-btn {
+          padding: 18px 24px;
+          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+          border: none;
+          border-radius: 0 var(--border-radius-large) var(--border-radius-large) 0;
+          color: white;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 1.1em;
+        }
+
+        .search-btn:hover {
+          transform: translateX(-2px);
+          box-shadow: -2px 0 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .video-grid-container {
+          padding: 40px 0;
+        }
+
+        .search-results-header {
+          margin-bottom: 30px;
+          text-align: center;
+        }
+
+        .search-results-header h2 {
+          color: var(--text-primary);
+          font-size: 1.8em;
+          margin: 0 0 10px;
+          font-weight: 600;
+        }
+
+        .results-count {
+          color: var(--text-muted);
+          font-size: 1em;
+        }
+
+        .video-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 30px;
+          margin-top: 30px;
+        }
+
+        .video-card {
+          background: var(--surface-color);
+          border-radius: var(--border-radius-large);
+          overflow: hidden;
+          box-shadow: var(--shadow-medium);
+          transition: all 0.4s ease;
+          cursor: pointer;
+          border: 1px solid var(--border-color);
+          animation: fadeInUp 0.6s ease forwards;
+          opacity: 0;
+          transform: translateY(30px);
+        }
+
+        @keyframes fadeInUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .video-card:hover {
+          transform: translateY(-8px);
+          box-shadow: var(--shadow-large);
+        }
+
+        .video-thumbnail-wrapper {
+          position: relative;
+          width: 100%;
+          height: 200px;
+          overflow: hidden;
+        }
+
+        .video-thumbnail {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.4s ease;
+        }
+
+        .video-card:hover .video-thumbnail {
+          transform: scale(1.05);
+        }
+
+        .play-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0,0,0,0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .play-overlay {
+          opacity: 1;
+        }
+
+        .play-button {
+          width: 60px;
+          height: 60px;
+          background: rgba(255,255,255,0.9);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+          background: white;
+          transform: scale(1.1);
+        }
+
+        .play-icon {
+          font-size: 20px;
+          color: var(--primary-color);
+          margin-left: 3px;
+        }
+
+        .video-info {
+          padding: 20px;
+        }
+
+        .video-title {
+          font-size: 1.2em;
+          font-weight: 600;
+          color: var(--text-primary);
+          margin: 0 0 8px;
+          line-height: 1.4;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .video-channel {
+          color: var(--primary-color);
+          font-weight: 500;
+          margin: 0 0 12px;
+          font-size: 0.95em;
+        }
+
+        .video-description {
+          color: var(--text-secondary);
+          margin: 0 0 15px;
+          line-height: 1.5;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .video-meta {
+          border-top: 1px solid var(--border-color);
+          padding-top: 12px;
+        }
+
+        .video-date {
+          color: var(--text-muted);
+          font-size: 0.9em;
+        }
+
+        /* Video Modal */
+        .video-modal {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.8);
+          z-index: 1000;
+          backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: var(--surface-color);
+          border-radius: var(--border-radius-large);
+          width: 90vw;
+          max-width: 800px;
+          max-height: 90vh;
+          overflow: hidden;
+          box-shadow: var(--shadow-large);
+        }
+
+        .modal-header {
+          padding: 20px 25px;
+          border-bottom: 1px solid var(--border-color);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .modal-header h3 {
+          margin: 0;
+          color: var(--text-primary);
+          font-weight: 600;
+        }
+
+        .modal-close {
+          background: none;
+          border: none;
+          font-size: 24px;
+          color: var(--text-muted);
+          cursor: pointer;
+          padding: 0;
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+          background: var(--border-color);
+          color: var(--text-primary);
+        }
+
+        .modal-body {
+          padding: 0;
+        }
+
+        #videoPlayer {
+          width: 100%;
+          height: 450px;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: var(--surface-color);
+          border: 2px solid var(--border-color);
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 100;
+          box-shadow: var(--shadow-medium);
+        }
+
+        .theme-toggle:hover {
+          transform: scale(1.1);
+          box-shadow: var(--shadow-large);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+          .container {
+            padding: 0 15px;
+          }
+          
+          .page-title {
+            font-size: 2.2em;
+            flex-direction: column;
+            gap: 10px;
+          }
+          
+          .video-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+          
+          .search-input-wrapper {
+            flex-direction: column;
+          }
+          
+          .search-btn {
+            border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+          }
+          
+          .modal-content {
+            width: 95vw;
+            margin: 20px;
+          }
+          
+          #videoPlayer {
+            height: 250px;
+          }
+          
+          .theme-toggle {
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .header-gradient {
+            padding: 40px 0 30px;
+          }
+          
+          .page-title {
+            font-size: 1.8em;
+          }
+          
+          .search-container {
+            padding: 20px 0;
+          }
+          
+          .search-input, .search-btn {
+            padding: 15px 20px;
+          }
+          
+          .video-info {
+            padding: 15px;
+          }
+          
+          .modal-header {
+            padding: 15px 20px;
+          }
+          
+          #videoPlayer {
+            height: 200px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span id="themeIcon">🌙</span>
+    </div>
+
+    <div class="video-page">
+        <!-- Header with search -->
+        <div class="video-header">
+            <div class="header-gradient">
+                <div class="container">
+                    <h1 class="page-title">
+                        <span class="icon-wrapper">🎥</span>
+                        Health Videos
+                    </h1>
+                    <p class="page-subtitle">Discover wellness content tailored for you</p>
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="container">
+                    <form onsubmit="handleSearch(event)" class="search-form">
+                        <div class="search-input-wrapper">
+                            <input type="text" name="q" placeholder="Search health videos..." class="search-input">
+                            <button type="submit" class="search-btn">
+                                <span class="search-icon">🔍</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="video-grid-container">
+            <div class="container">
+                <div class="video-grid" id="videoGrid">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Video Title</h3>
+                <button class="modal-close" onclick="closeVideoModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="videoPlayer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock health video data
+        const healthVideos = [
+            {
+                id: 'dQw4w9WgXcQ',
+                title: '10 Minute Morning Yoga - Full Body Stretch',
+                description: 'Start your day with this energizing yoga routine perfect for beginners. This gentle flow will wake up your body and mind.',
+                thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg',
+                channel: 'Yoga with Adriene',
+                published_at: '2023-01-15T08:00:00Z'
+            },
+            {
+                id: 'J___1234567',
+                title: 'Healthy Breakfast Ideas - 5 Quick Recipes',
+                description: 'Nutritious and delicious breakfast recipes you can make in under 10 minutes. Perfect for busy mornings.',
+                thumbnail: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=400&h=225&fit=crop',
+                channel: 'Healthy Eats',
+                published_at: '2023-02-01T10:30:00Z'
+            },
+            {
+                id: 'K___2345678',
+                title: 'HIIT Workout for Beginners - 20 Minutes',
+                description: 'High-intensity interval training perfect for burning calories at home. No equipment needed!',
+                thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=225&fit=crop',
+                channel: 'FitnessBlender',
+                published_at: '2023-01-20T14:15:00Z'
+            },
+            {
+                id: 'L___3456789',
+                title: 'Meditation for Stress Relief - 15 Minutes',
+                description: 'Guided meditation to help reduce stress and improve mental clarity. Perfect for any time of day.',
+                thumbnail: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=225&fit=crop',
+                channel: 'Headspace',
+                published_at: '2023-01-10T18:45:00Z'
+            },
+            {
+                id: 'M___4567890',
+                title: 'Healthy Meal Prep - Week of Lunches',
+                description: 'Prepare a week\'s worth of healthy lunches in just 1 hour. Save time and eat better.',
+                thumbnail: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&h=225&fit=crop',
+                channel: 'Meal Prep Mastery',
+                published_at: '2023-02-05T12:00:00Z'
+            }
+        ];
+
+        // Dark/Light Theme Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTheme();
+            loadVideos();
+            initializeVideoHandlers();
+        });
+
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (savedTheme === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+                if (themeIcon) themeIcon.textContent = '☀️';
+            } else {
+                html.setAttribute('data-theme', 'light');
+                if (themeIcon) themeIcon.textContent = '🌙';
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            const currentTheme = html.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                if (themeIcon) themeIcon.textContent = '🌙';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                if (themeIcon) themeIcon.textContent = '☀️';
+            }
+            
+            document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+            setTimeout(() => { document.body.style.transition = ''; }, 300);
+        }
+
+        function loadVideos(query = '') {
+            const videoGrid = document.getElementById('videoGrid');
+            if (!videoGrid) return;
+
+            let filteredVideos = healthVideos;
+            
+            if (query) {
+                filteredVideos = healthVideos.filter(video => 
+                    video.title.toLowerCase().includes(query.toLowerCase()) ||
+                    video.description.toLowerCase().includes(query.toLowerCase())
+                );
+            }
+
+            // Shuffle and take random 5
+            const shuffled = filteredVideos.sort(() => 0.5 - Math.random());
+            const selectedVideos = shuffled.slice(0, 5);
+
+            videoGrid.innerHTML = selectedVideos.map((video, index) => `
+                <div class="video-card" data-video-id="${video.id}" style="animation-delay: ${index * 0.1}s">
+                    <div class="video-thumbnail-wrapper">
+                        <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-info">
+                        <h3 class="video-title">${video.title}</h3>
+                        <p class="video-channel">${video.channel}</p>
+                        <p class="video-description">${video.description.substring(0, 100)}...</p>
+                        <div class="video-meta">
+                            <span class="video-date">
+                                ${getTimeAgo(video.published_at)}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            initializeVideoHandlers();
+        }
+
+        function getTimeAgo(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffInDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+            
+            if (diffInDays < 1) return 'Today';
+            if (diffInDays < 7) return `${diffInDays} days ago`;
+            if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} weeks ago`;
+            return `${Math.floor(diffInDays / 30)} months ago`;
+        }
+
+        function initializeVideoHandlers() {
+            const videoCards = document.querySelectorAll('.video-card');
+            videoCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const videoId = this.getAttribute('data-video-id');
+                    const videoTitle = this.querySelector('.video-title').textContent;
+                    openVideoModal(videoId, videoTitle);
+                });
+            });
+
+            const modal = document.getElementById('videoModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal || e.target.classList.contains('modal-close')) {
+                        closeVideoModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeVideoModal();
+            });
+        }
+
+        function openVideoModal(videoId, title) {
+            const modal = document.getElementById('videoModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const videoPlayer = document.getElementById('videoPlayer');
+            
+            if (!modal || !modalTitle || !videoPlayer) return;
+            
+            modalTitle.textContent = title;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            modal.style.opacity = '0';
+            setTimeout(() => { modal.style.opacity = '1'; }, 10);
+            
+            // Create iframe player
+            videoPlayer.innerHTML = `
+                <iframe
+                    width="100%"
+                    height="450"
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&modestbranding=1&rel=0&showinfo=0&fs=1&playsinline=1"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            `;
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            
+            if (!modal) return;
+            
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                if (videoPlayer) videoPlayer.innerHTML = '';
+            }, 300);
+        }
+
+        function handleSearch(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const query = formData.get('q');
+            
+            if (query.trim()) {
+                loadVideos(query.trim());
+                
+                // Update header to show search results
+                const container = document.querySelector('.video-grid-container .container');
+                const existingHeader = container.querySelector('.search-results-header');
+                if (existingHeader) {
+                    existingHeader.remove();
+                }
+                
+                const resultsHeader = document.createElement('div');
+                resultsHeader.className = 'search-results-header';
+                resultsHeader.innerHTML = `
+                    <h2>Results for "${query}"</h2>
+                    <span class="results-count">5 videos found</span>
+                `;
+                container.insertBefore(resultsHeader, container.querySelector('.video-grid'));
+            }
+        }
+
+        // Touch optimization for mobile
+        if ('ontouchstart' in window) {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    const videoCards = document.querySelectorAll('.video-card');
+                    videoCards.forEach(card => {
+                        card.addEventListener('touchstart', function() {
+                            this.style.transform = 'scale(0.98)';
+                        });
+                        card.addEventListener('touchend', function() {
+                            this.style.transform = '';
+                        });
+                        card.addEventListener('touchcancel', function() {
+                            this.style.transform = '';
+                        });
+                    });
+                }, 100);
+            });
+        }
+    </script>
+</body>
+</html>

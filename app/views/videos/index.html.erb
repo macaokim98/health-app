@@ -1,0 +1,104 @@
+<div class="video-page">
+  <!-- Header with search -->
+  <div class="video-header">
+    <div class="header-gradient">
+      <div class="container">
+        <h1 class="page-title">
+          <span class="icon-wrapper">🎥</span>
+          Health Videos
+        </h1>
+        <p class="page-subtitle">Discover wellness content tailored for you</p>
+      </div>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+      <div class="container">
+        <form action="/videos/search" method="GET" class="search-form">
+          <div class="search-input-wrapper">
+            <input type="text" name="q" placeholder="Search health videos..." 
+                   value="<%= @search_query if defined?(@search_query) %>" 
+                   class="search-input">
+            <button type="submit" class="search-btn">
+              <span class="search-icon">🔍</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Grid -->
+  <div class="video-grid-container">
+    <div class="container">
+      <% if @search_query %>
+        <div class="search-results-header">
+          <h2>Results for "<%= @search_query %>"</h2>
+          <div class="results-info">
+            <span class="results-count"><%= @videos.length %> videos found</span>
+            <span class="cycle-info">Cycle <%= @cycle_count || 1 %> of <%= @max_cycles || 5 %></span>
+          </div>
+          <div class="refresh-controls">
+            <%= link_to "/videos/refresh?q=#{@search_query}&cycle=#{@cycle_count || 1}", 
+                        method: :get, 
+                        class: "refresh-btn" do %>
+              <span class="refresh-icon">🔄</span>
+              다시검색
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      
+      <div class="video-grid">
+        <% @videos.each_with_index do |video, index| %>
+          <div class="video-card" data-video-id="<%= video[:id] %>" style="animation-delay: <%= index * 0.1 %>s">
+            <div class="video-thumbnail-wrapper">
+              <img src="<%= video[:thumbnail] %>" alt="<%= video[:title] %>" class="video-thumbnail">
+              <div class="play-overlay">
+                <div class="play-button">
+                  <span class="play-icon">▶</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="video-info">
+              <h3 class="video-title"><%= video[:title] %></h3>
+              <p class="video-channel"><%= video[:channel] %></p>
+              <p class="video-description"><%= truncate(video[:description], length: 100) %></p>
+              <div class="video-meta">
+                <span class="video-date">
+                  <% if video[:published_at].is_a?(String) %>
+                    <%= time_ago_in_words(Time.parse(video[:published_at])) %> ago
+                  <% else %>
+                    <%= time_ago_in_words(video[:published_at]) %> ago
+                  <% end %>
+                </span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
+      <% if @videos.empty? %>
+        <div class="empty-state">
+          <div class="empty-icon">🎬</div>
+          <h3>No videos found</h3>
+          <p>Try searching with different keywords</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Video Modal -->
+<div id="videoModal" class="video-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modalTitle">Video Title</h3>
+      <button class="modal-close" onclick="closeVideoModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="videoPlayer"></div>
+    </div>
+  </div>
+</div>
