@@ -1,4 +1,4 @@
-class YouTubeService
+class YoutubeService
   require 'google/apis/youtube_v3'
   
   def initialize
