@@ -132,8 +132,8 @@ GEM
       mutex_m
       representable (~> 3.0)
       retriable (>= 2.0, < 4.a)
-    google-apis-youtube_v3 (0.20.0)
-      google-apis-core (>= 0.6, < 2.a)
+    google-apis-youtube_v3 (0.56.0)
+      google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-env (2.3.1)
       base64 (~> 0.2)
       faraday (>= 1.0, < 3.a)
@@ -225,6 +225,7 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
+    pg (1.5.9)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -401,11 +402,12 @@ DEPENDENCIES
   capybara
   debug
   dotenv-rails (~> 3.1)
-  google-apis-youtube_v3 (~> 0.20.0)
+  google-apis-youtube_v3 (~> 0.56.0)
   httparty (~> 0.22.0)
   importmap-rails
   jbuilder
   kamal
+  pg (~> 1.1)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
