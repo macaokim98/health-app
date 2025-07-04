@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
   def index
     require_relative '../services/youtube_service'
-    @youtube_service = YouTubeService.new
+    @youtube_service = YoutubeService.new
     @videos = @youtube_service.search_videos('health fitness workout yoga exercise', max_results: 5)
     @search_query = 'health fitness workout yoga exercise'
     @cycle_count = 1
@@ -11,7 +11,7 @@ class VideosController < ApplicationController
 
   def search
     require_relative '../services/youtube_service'
-    @youtube_service = YouTubeService.new
+    @youtube_service = YoutubeService.new
     query = params[:q] || 'health'
     cycle = (params[:cycle] || 1).to_i
     
@@ -33,7 +33,7 @@ class VideosController < ApplicationController
 
   def refresh
     require_relative '../services/youtube_service'
-    @youtube_service = YouTubeService.new
+    @youtube_service = YoutubeService.new
     query = params[:q] || 'health'
     current_cycle = (params[:cycle] || 1).to_i
     next_cycle = current_cycle >= 5 ? 1 : current_cycle + 1
